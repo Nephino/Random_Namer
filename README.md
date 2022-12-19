@@ -1,5 +1,2 @@
-# TestRepository
-This is a test description of a test Repository
-int main(){
-  return 0;
-}
+# Random Namer
+A simple thing can generate a random english name.
