@@ -3,8 +3,18 @@
 #include <stdbool.h>
 #include <time.h>
 
-char vovel[] = {'a', 'e', 'i', 'o', 'u'};
-int range[2] = {97, 122};  // a - z
+char vovel[5] = {'a', 'e', 'i', 'o', 'u'};
+int wordLength[2] = {5, 10};
+
+char getVovel(void)
+{
+    return vovel[ (rand() % 5) ];
+}
+
+char getLetter(void)
+{
+    return (char)(rand() % 25 + 97);  // 'a' ~ 'z'
+}
 
 bool isVovel(char letter)
 {   
@@ -16,11 +26,6 @@ bool isVovel(char letter)
     return 0;
 }
 
-char getLetter(void)
-{
-    return (char)(rand() % (range[1] - range[0]) + range[0]);
-}
-
 char getConsonant(void)
 {
     char letter = getLetter();
@@ -29,11 +34,6 @@ char getConsonant(void)
         letter = getLetter();
     }
     return letter;
-}
-
-char getVovel(void)
-{
-    return vovel[ (char)(rand() % 5) ];
 }
 
 void printWord(int length)
@@ -53,15 +53,11 @@ int main(int argc, char const *argv[])
 {
     srand((unsigned)time(NULL));
 
-    while(getchar() == '\n')
+    while(getchar() == '\n')  //input "enter" to generate a new word
     {
-        char length = (rand() % 5) + 5;  //[5,10]
-        printWord(length);
+        printWord(rand() % (wordLength[1] - wordLength[0]) + wordLength[0]);
         printf("\n");
     }
 
     return 0;
 }
-/**
- * nephino
-**/
